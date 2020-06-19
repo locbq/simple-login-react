@@ -10,7 +10,8 @@ import {
 import {
   UsernameInput,
   PasswordInput,
-  RememberCheckbox
+  RememberCheckbox,
+  SocialLogin
 } from './components';
 
 function LoginView({...props}){
@@ -34,6 +35,8 @@ function LoginView({...props}){
       <StyledParagraphDivider>
         <span>Sign up faster with</span>
       </StyledParagraphDivider>
+
+      <SocialLogin/>
     </StyledGrid>
   );
 }
