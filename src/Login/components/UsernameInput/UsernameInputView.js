@@ -8,7 +8,7 @@ import {
   Seperator
 } from './styles';
 
-function PasswordInputView({
+function UsernameInputView({
   classes,
   ...props
 }){
@@ -27,8 +27,8 @@ function PasswordInputView({
   return (
     <StyledGridInputField>
       <StyledInput
-        type="password"
-        placeholder="Password"
+        type="text"
+        placeholder="Username"
         className={focus ? classes.focus : classes.nonFocus}
         onBlur={handleBlur}
       />
@@ -37,4 +37,4 @@ function PasswordInputView({
   );
 }
 
-export default withStyles(styles)(PasswordInputView);
+export default withStyles(styles)(UsernameInputView);
