@@ -1,11 +1,67 @@
-import React from 'react';
+import React , {useState, useEffect} from 'react';
+import {withStyles} from '@material-ui/core';
 
-import PasswordInputView from './PasswordInputView';
+import {
+  styles,
+  StyledGridInputField,
+  StyledInput,
+  Seperator,
+  ErrorMessage
+} from './styles';
 
-function PasswordInput(props){
+function PasswordInput({
+  classes,
+  handleValuePassword,
+  errorMessagePassword,
+  setErrorMessagePassword,
+  ...props
+}){
+  const [password, setPassword] = useState('');
+  const [touchedInput, setTouchedInput] = useState(false);
+  const [focus, setFocus] = useState(false);
+
+  useEffect(() => {
+    if (password === '' && touchedInput){
+      setErrorMessagePassword('Password cannot be blank');
+    } else {
+      setErrorMessagePassword('');
+    }
+  }, [password]);
+
+  const handleChange = event => {
+    event.preventDefault();
+    const {value} = event.target;
+    setPassword(value);
+    setTouchedInput(true);
+  };
+
+  const handleBlur = event => {
+    event.preventDefault();
+    const {value} = event.target;
+    if (value === ''){
+      setFocus(false);
+    } else {
+      setFocus(true);
+    }
+    handleValuePassword(password);
+  };
+
   return (
-    <PasswordInputView {...props}/>
+    <StyledGridInputField>
+      <StyledInput
+        type="password"
+        placeholder="Password"
+        className={focus ? classes.focus : classes.nonFocus}
+        value={password}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+      <Seperator/>
+      <ErrorMessage>
+        {errorMessagePassword}
+      </ErrorMessage>
+    </StyledGridInputField>
   );
 }
 
-export default PasswordInput;
+export default withStyles(styles)(PasswordInput);

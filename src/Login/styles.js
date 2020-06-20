@@ -33,6 +33,9 @@ export const StyledButtonLogin = styled(Button)(({theme}) => ({
   transition: '0.5s ease-in-out',
   '&:hover': {
     backgroundPosition: 'right',
+  },
+  '&:disabled': {
+    background: '#adadaa'
   }
 }));
 

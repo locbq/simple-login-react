@@ -36,6 +36,11 @@ export const Seperator = styled('span')(({theme}) => ({
   transition: 'all 0.15s linear'
 }));
 
+export const ErrorMessage = styled('p')(({theme}) => ({
+  color: '#e59cc2',
+  margin: ' 10px 0px 0px 0px'
+}));
+
 export const styles = theme => ({
   focus: {
     borderBottom: '2px solid #c2e59c'
