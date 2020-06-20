@@ -1,8 +1,12 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-import SocialButton from './components/SocialButton';
-import {socialLogins} from './const';
+import {
+  StyledButtonFacebook,
+  StyledButtonGoogle,
+  StyledButtonTwitter
+} from './styles';
 
 function SocialLogin(){
   return (
@@ -10,9 +14,17 @@ function SocialLogin(){
       container
       justify="space-between"
     >
-      {socialLogins.map(social => (
-        <SocialButton title={social.title}/>
-      ))}
+      <StyledButtonFacebook>
+        <FontAwesomeIcon icon={['fab', 'facebook-f']}/> Facebook
+      </StyledButtonFacebook>
+
+      <StyledButtonGoogle>
+        <FontAwesomeIcon icon={['fab', 'google']}/> Google
+      </StyledButtonGoogle>
+
+      <StyledButtonTwitter>
+        <FontAwesomeIcon icon={['fab', 'twitter']}/> Twitter
+      </StyledButtonTwitter>
     </Grid>
   );
 }

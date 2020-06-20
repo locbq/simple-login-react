@@ -1,13 +1,20 @@
-import {faFacebookF} from '@fortawesome/free-solid-svg-icons';
-
 export const socialLogins = [
   {
-    title: 'Facebook'
+    title: 'Facebook',
+    icon: ['fab', 'facebook-f'],
+    mainColor: '#3c5a99',
+    hoverColor: '#31497d'
   },
   {
-    title: 'Google'
+    title: 'Google',
+    icon: ['fab', 'google'],
+    mainColor: '#db4437',
+    hoverColor: '#c73124'
   },
   {
-    title: 'Twitter'
+    title: 'Twitter',
+    icon: ['fab', 'twitter'],
+    mainColor: '#1da1f2',
+    hoverColor: '#0d8ddb'
   }
 ];

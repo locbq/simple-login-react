@@ -5,8 +5,7 @@ import {StyledGridInputField} from './styles';
 function RememberCheckboxView(){
 
   const handleClick = event => {
-    const {value} = event.target;
-    console.log(value);
+    // const {value} = event.target;
   };
   return (
     <StyledGridInputField
@@ -14,7 +13,7 @@ function RememberCheckboxView(){
       alignItems="center"
       justify="flex-end"
     >
-      <label for="remember">Remember Me</label>
+      <label htmlFor="remember">Remember Me</label>
       <input
         id="remember"
         name="remember"
