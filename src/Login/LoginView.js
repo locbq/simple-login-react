@@ -1,5 +1,6 @@
 /* eslint-disable no-alert */
 import React, {useState} from 'react';
+import {isEmpty} from 'lodash';
 
 import {
   StyledGrid,
@@ -19,13 +20,13 @@ function LoginView({...props}){
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const [errorMessageUsername, setErrorMessageUSername] = useState('');
+  const [errorMessageUsername, setErrorMessageUsername] = useState('');
   const [errorMessagePassword, setErrorMessagePassword] = useState('');
 
-  const disableLogin = username === ''
-  || password === ''
-  || errorMessageUsername !== ''
-  || errorMessagePassword !== '';
+  const disableLogin = isEmpty(username)
+  || isEmpty(password)
+  || !isEmpty(errorMessageUsername)
+  || !isEmpty(errorMessagePassword);
 
   const handleValueUsername = value => {
     setUsername(value);
@@ -48,7 +49,7 @@ function LoginView({...props}){
         <UsernameInput
           handleValueUsername={handleValueUsername}
           errorMessageUsername={errorMessageUsername}
-          setErrorMessageUSername={setErrorMessageUSername}
+          setErrorMessageUsername={setErrorMessageUsername}
         />
         <PasswordInput
           handleValuePassword={handleValuePassword}
@@ -58,7 +59,7 @@ function LoginView({...props}){
         <RememberCheckbox/>
         <StyledButtonLogin
           disabled={disableLogin}
-          type="button"
+          type="submit"
           onClick={handleSubmit}
         >
           Login

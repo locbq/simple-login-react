@@ -1,5 +1,9 @@
-import React , {useState, useEffect} from 'react';
+import React , {
+  useState, 
+  useEffect
+} from 'react';
 import {withStyles} from '@material-ui/core';
+import {isEmpty} from 'lodash';
 
 import {
   styles,
@@ -13,7 +17,7 @@ function UsernameInput({
   classes,
   handleValueUsername,
   errorMessageUsername,
-  setErrorMessageUSername,
+  setErrorMessageUsername,
   ...props
 }){
   const [username, setUsername] = useState('');
@@ -21,12 +25,12 @@ function UsernameInput({
   const [focus, setFocus] = useState(false);
 
   useEffect(() => {
-    if (username === '' && touchedInput){
-      setErrorMessageUSername('Username cannot be blank');
+    if (isEmpty(username) && touchedInput){
+      setErrorMessageUsername('Username cannot be blank');
     } else {
-      setErrorMessageUSername('');
+      setErrorMessageUsername('');
     }
-  },[username]);
+  },[username, setErrorMessageUsername, touchedInput]);
 
   const handleChange = event => {
     event.preventDefault();
@@ -38,7 +42,7 @@ function UsernameInput({
   const handleBlur = event => {
     event.preventDefault();
     const {value} = event.target;
-    if (value === ''){
+    if (isEmpty(value)){
       setFocus(false);
     } else {
       setFocus(true);
@@ -52,7 +56,6 @@ function UsernameInput({
         type="text"
         placeholder="Username"
         className={focus ? classes.focus : classes.nonFocus}
-        value={username}
         onChange={handleChange}
         onBlur={handleBlur}
       />

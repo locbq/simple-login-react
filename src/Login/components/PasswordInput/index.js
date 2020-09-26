@@ -1,5 +1,9 @@
-import React , {useState, useEffect} from 'react';
+import React , {
+  useState, 
+  useEffect
+} from 'react';
 import {withStyles} from '@material-ui/core';
+import {isEmpty} from 'lodash';
 
 import {
   styles,
@@ -21,12 +25,12 @@ function PasswordInput({
   const [focus, setFocus] = useState(false);
 
   useEffect(() => {
-    if (password === '' && touchedInput){
+    if (isEmpty(password) && touchedInput){
       setErrorMessagePassword('Password cannot be blank');
     } else {
       setErrorMessagePassword('');
     }
-  }, [password]);
+  }, [password, setErrorMessagePassword, touchedInput]);
 
   const handleChange = event => {
     event.preventDefault();
@@ -38,7 +42,7 @@ function PasswordInput({
   const handleBlur = event => {
     event.preventDefault();
     const {value} = event.target;
-    if (value === ''){
+    if (isEmpty(value)){
       setFocus(false);
     } else {
       setFocus(true);
@@ -52,7 +56,6 @@ function PasswordInput({
         type="password"
         placeholder="Password"
         className={focus ? classes.focus : classes.nonFocus}
-        value={password}
         onChange={handleChange}
         onBlur={handleBlur}
       />
